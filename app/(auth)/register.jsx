@@ -28,7 +28,7 @@ export default function Login({ onPress }) {
           headerStyle: {
             backgroundColor: '#0F0303',
           },
-          headerShadowVisible: false,
+          headerShadowVisible: true,
         }}
          
       />
@@ -95,14 +95,14 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    color: 'white',
+    color: '#000000',
     fontSize: 32,
     fontWeight: '900',
     marginBottom: 30,
     textAlign: 'center',
   },
   subtitle: {
-    color: 'white',
+    color: '#000000',
     fontSize: 18,
     fontWeight: '400',
     marginBottom: 10,
@@ -113,17 +113,18 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 70,
-    backgroundColor: '#1a0a0a',
+    backgroundColor: '#fffff',
     borderRadius: 10,
     paddingHorizontal: 20,
-    color: 'white',
+    color: '#000000',
     fontSize: 16,
     marginLeft: 20,
     marginRight: 20,
+    borderWidth: 1,
   
   },
   fieldtitle: {
-    color: 'white',
+    color: '#000000',
     fontSize: 18,
     fontWeight: '600',
     marginTop: 30,

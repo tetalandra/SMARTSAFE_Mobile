@@ -3,6 +3,7 @@ import { Button, Image } from "react-native";
 import { View, Text, TextInput, StyleSheet,  Pressable } from 'react-native';
 import { useState } from 'react';
 import { Stack } from "expo-router";
+import { ScrollView } from "react-native-web";
 
 
 export default function Login({ onPress }) {
@@ -10,17 +11,18 @@ export default function Login({ onPress }) {
   const [email, setEmail] = useState('');
   return (
     <>
+    <ScrollView>
           <Stack.Screen
         options={{
           headerTitle: () => (
             <Image
-              source={require('../../assets/images/large.png')}
+              // source={require('../../assets/images/large.png')}
               style={{ width: 140, height: 50, resizeMode: 'contain' }}
             />
            
           ),
           headerStyle: {
-            backgroundColor: '#0F0303',
+            backgroundColor: '#fffff',
           },
           headerShadowVisible: false,
         }}
@@ -76,24 +78,25 @@ export default function Login({ onPress }) {
     </Pressable>
 
     </View>
+    </ScrollView>
     </>
   );
 }
 const styles = StyleSheet.create({
  container: {
     flex: 1,
-    backgroundColor: '#0F0303',
+    backgroundColor: '#ffffff',
     padding: 20,
   },
   title: {
-    color: 'white',
+    color: '#000000',
     fontSize: 32,
     fontWeight: '900',
     marginBottom: 30,
     textAlign: 'center',
   },
   subtitle: {
-    color: 'white',
+    color: '#000000',
     fontSize: 18,
     fontWeight: '400',
     marginBottom: 10,
@@ -104,17 +107,19 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 70,
-    backgroundColor: '#1a0a0a',
+    backgroundColor: '#fffff',
     borderRadius: 10,
     paddingHorizontal: 20,
     color: 'white',
     fontSize: 16,
     marginLeft: 20,
     marginRight: 20,
+    borderColor: '#000000',
+    borderWidth: 1,
   
   },
   fieldtitle: {
-    color: 'white',
+    color: '#000000',
     fontSize: 18,
     fontWeight: '600',
     marginTop: 30,
@@ -173,10 +178,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 20,
     marginRight: 20,
+
   },
 
   createText: {
-    color: 'white',
+    color: 'black',
     fontSize: 18,
     fontWeight: '400',
   },

@@ -8,14 +8,14 @@ export default function RootLayout() {
     const theme = Colors[colorScheme]; 
   return (
     <>
-    <StatusBar style="light" backgroundColor="#0F0303" />
+    {/* <StatusBar style="light" backgroundColor="#0F0303" /> */}
     <Stack screenOptions={{
-            headerStyle : {
-                backgroundColor: theme.background},
-                headerTintColor: theme.title,  
-            contentStyle: {
-            backgroundColor: '#0F0303',
-          },            
+          //   headerStyle : {
+          //       backgroundColor: theme.background},
+          //       headerTintColor: theme.title,  
+          //   contentStyle: {
+          //   backgroundColor: '#FFFFF',
+          // },            
         }}>
         <Stack.Screen name="index" options = {{headerShown: false}} />
     </Stack>

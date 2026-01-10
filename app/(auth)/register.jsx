@@ -1,152 +1,151 @@
-import { Button, Image, ScrollView } from "react-native";
-// import { StyleSheet, View, Text } from "react-native";
-import { View, Text, TextInput, StyleSheet,  Pressable } from 'react-native';
 import { useState } from 'react';
-import { Stack } from "expo-router";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Pressable,
+  Image,
+  ScrollView,
+} from 'react-native';
 
-
+import { Stack } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 export default function Login({ onPress }) {
   const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');  
-  const [password, setPassword] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  
+  const [password, setPassword] = useState('');
+
   return (
-    <>
     <SafeAreaView style={{ flex: 1 }}>
-    <ScrollView>
-        <Stack.Screen
-        options={{
-          headerTitle: () => (
-            <Image
-              source={require('../../assets/images/large.png')}
-              style={{ width: 140, height: 50, resizeMode: 'contain' }}
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+
+        <View style={styles.container}>
+          <Text style={styles.title}>Create Account</Text>
+          <Text style={styles.subtitle}>
+            Securely access your safety dashboard.
+          </Text>
+
+          <Text style={styles.fieldtitle}>First Name</Text>
+          <View style={styles.inputContainer}>
+            <Ionicons name="person-outline" size={22} color="#777" />
+            <TextInput
+              placeholder="First name"
+              placeholderTextColor="#aaa"
+              value={firstName}
+              onChangeText={setFirstName}
+              style={styles.input}
             />
-           
-          ),
-          headerStyle: {
-            backgroundColor: '#0F0303',
-          },
-          headerShadowVisible: true,
-        }}
-         
-      />
-    <View style = {styles.container}>
-      <Text style ={styles.title} > Create Account</Text>
-      <Text style ={styles.subtitle} >Securely access your safety dashboard. </Text>
+          </View>
 
-        <View style={styles.form}>
+          <Text style={styles.fieldtitle}>Last Name</Text>
+          <View style={styles.inputContainer}>
+            <Ionicons name="person-outline" size={22} color="#777" />
+            <TextInput
+              placeholder="Last name"
+              placeholderTextColor="#aaa"
+              value={lastName}
+              onChangeText={setLastName}
+              style={styles.input}
+            />
+          </View>
 
-        <Text style ={styles.fieldtitle} >First Name</Text>
-       <TextInput
-          style={styles.input}
-          placeholder="FirstName"
-          placeholderTextColor="#aaa"
-          value={firstName}
-          onChangeText={setFirstName}
-        />
-      <Text style ={styles.fieldtitle} >Last Name</Text>
-       <TextInput
-          style={styles.input}
-          placeholder="LastName"
-          placeholderTextColor="#aaa"
-          value={lastName}
-          onChangeText={setLastName}
-        />
+          <Text style={styles.fieldtitle}>Email</Text>
+          <View style={styles.inputContainer}>
+            <Ionicons name="mail-outline" size={22} color="#777" />
+            <TextInput
+              placeholder="Enter your email"
+              placeholderTextColor="#aaa"
+              value={email}
+              onChangeText={setEmail}
+              style={styles.input}
+              keyboardType="email-address"
+            />
+          </View>
 
-        <Text style ={styles.fieldtitle} >Enter your Email</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Full Name"
-          placeholderTextColor="#aaa"
-          value={email}
-          onChangeText={setEmail}
-        />
+          <Text style={styles.fieldtitle}>Password</Text>
+          <View style={styles.inputContainer}>
+            <Ionicons name="lock-closed-outline" size={22} color="#777" />
+            <TextInput
+              placeholder="Enter your password"
+              placeholderTextColor="#aaa"
+              secureTextEntry
+              value={password}
+              onChangeText={setPassword}
+              style={styles.input}
+            />
+          </View>
 
-        <Text style ={styles.fieldtitle} >Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your email"
-          placeholderTextColor="#aaa"
-          value={password}
-          onChangeText={setPassword}
-        />
-         <Pressable
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.button,
-        pressed && styles.pressed,
-      ]}
-    >
-      <Text style={styles.text}>Sign Up</Text>
-    </Pressable>
-    </View>
-    </View>
-    </ScrollView>
+          <Pressable
+            onPress={onPress}
+            style={({ pressed }) => [
+              styles.button,
+              pressed && styles.pressed,
+            ]}
+          >
+            <Text style={styles.text}>Sign Up</Text>
+          </Pressable>
+        </View>
+      </ScrollView>
     </SafeAreaView>
-    </>
   );
 }
 const styles = StyleSheet.create({
- container: {
+  container: {
     flex: 1,
-    backgroundColor: '#0F0303',
+    backgroundColor: '#fffff',
     padding: 20,
   },
+
   title: {
     color: '#000000',
     fontSize: 32,
     fontWeight: '900',
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+
+  subtitle: {
+    color: '#1c1c1c1',
+    fontSize: 16,
     marginBottom: 30,
     textAlign: 'center',
   },
-  subtitle: {
-    color: '#000000',
-    fontSize: 18,
-    fontWeight: '400',
-    marginBottom: 10,
-    textAlign: 'center',
-  },
-   container: {
-    gap: 5,
-  },
-  input: {
-    height: 70,
-    backgroundColor: '#fffff',
-    borderRadius: 10,
-    paddingHorizontal: 20,
-    color: '#000000',
-    fontSize: 16,
-    marginLeft: 20,
-    marginRight: 20,
-    borderWidth: 1,
-  
-  },
+
   fieldtitle: {
     color: '#000000',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '600',
-    marginTop: 30,
-    textAlign: 'left',
-    marginBottom: 10,
-    marginLeft: 35,
-
+    marginTop: 20,
+    marginBottom: 8,
   },
-    button: {
-    height: 70,
+
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#000000',
+    borderRadius: 10,
+    height: 60,
+    paddingHorizontal: 15,
+  },
+
+  input: {
+    flex: 1,
+    marginLeft: 10,
+    color: '#000000',
+    fontSize: 16,
+  },
+
+  button: {
+    height: 65,
     backgroundColor: '#D61C1C',
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 40,
-    marginLeft: 20,
-    marginRight: 20,
-  },
-
-  pressed: {
-    opacity: 0.55,
-    transform: [{ scale: 0.88 }],
   },
 
   text: {
@@ -155,43 +154,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 
-    orContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 25,
-    marginLeft: 20,
-    marginRight: 20,
-  },
-
-  line: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#3a2a2a',
-  },
-
-  orText: {
-    marginHorizontal: 10,
-    color: '#aaa',
-    fontSize: 14,
-  },
-  createButton: {
-    height: 70,
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: '#6b5a5a',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 20,
-    marginRight: 20,
-  },
-
-  createText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '400',
-  },
-
   pressed: {
     opacity: 0.85,
   },
-})
+});

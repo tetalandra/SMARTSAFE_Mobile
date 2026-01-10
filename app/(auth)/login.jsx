@@ -1,193 +1,188 @@
-import { Button, Image } from "react-native";
-// import { StyleSheet, View, Text } from "react-native";
-import { View, Text, TextInput, StyleSheet,  Pressable } from 'react-native';
 import { useState } from 'react';
-import { Stack } from "expo-router";
-import { ScrollView } from "react-native-web";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Pressable,
+  Image,
+  ScrollView,
+} from 'react-native';
+
+import { Stack } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+
 
 
 export default function Login({ onPress }) {
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
-    <>
-    <ScrollView>
-          <Stack.Screen
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <Stack.Screen
         options={{
           headerTitle: () => (
             <Image
-              // source={require('../../assets/images/large.png')}
               style={{ width: 140, height: 50, resizeMode: 'contain' }}
             />
-           
           ),
-          headerStyle: {
-            backgroundColor: '#fffff',
-          },
+          headerStyle: { backgroundColor: '#ffffff' },
           headerShadowVisible: false,
         }}
-         
       />
-    <View style = {styles.container}>
-      <Text style ={styles.title} >Welcome Back</Text>
-      <Text style ={styles.subtitle} >Securely access your safety dashboard. </Text>
 
-        <View style={styles.form}>
-        <Text style ={styles.fieldtitle} >Enter your Email</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Full Name"
-          placeholderTextColor="#aaa"
-          value={name}
-          onChangeText={setName}
-        />
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome Back</Text>
+        <Text style={styles.subtitle}>
+          Securely access your safety dashboard.
+        </Text>
 
-        <Text style ={styles.fieldtitle} >Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your email"
-          placeholderTextColor="#aaa"
-          value={email}
-          onChangeText={setEmail}
-        />
-         <Pressable
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.button,
-        pressed && styles.pressed,
-      ]}
-    >
-      <Text style={styles.text}>Login</Text>
-    </Pressable>
-    </View>
+        {/* EMAIL */}
+        <Text style={styles.fieldtitle}>Email</Text>
+        <View style={styles.inputContainer}>
+          <Ionicons name="mail-outline" size={22} color="#777" />
+          <TextInput
+            placeholder="Enter your email"
+            placeholderTextColor="#aaa"
+            value={email}
+            onChangeText={setEmail}
+            style={styles.input}
+          />
+        </View>
 
-     <View style={styles.orContainer}>
-      <View style={styles.line} />
-      <Text style={styles.orText}>OR</Text>
-      <View style={styles.line} />
-    </View>
+        {/* PASSWORD */}
+        <Text style={styles.fieldtitle}>Password</Text>
+        <View style={styles.inputContainer}>
+          <Ionicons name="lock-closed-outline" size={22} color="#777" />
+          <TextInput
+            placeholder="Enter your password"
+            placeholderTextColor="#aaa"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+            style={styles.input}
+          />
+        </View>
 
-    <Pressable
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.createButton,
-        pressed && styles.pressed,
-      ]}
-    >
-      <Text style={styles.createText}>Create New Account</Text>
-    </Pressable>
+        {/* LOGIN BUTTON */}
+        <Pressable
+          onPress={onPress}
+          style={({ pressed }) => [
+            styles.button,
+            pressed && styles.pressed,
+          ]}
+        >
+          <Text style={styles.text}>Login</Text>
+        </Pressable>
 
-    </View>
+        <View style={styles.orContainer}>
+          <View style={styles.line} />
+          <Text style={styles.orText}>OR</Text>
+          <View style={styles.line} />
+        </View>
+
+        <Pressable
+          onPress={onPress}
+          style={({ pressed }) => [
+            styles.createButton,
+            pressed && styles.pressed,
+          ]}
+        >
+          <Text style={styles.createText}>Create New Account</Text>
+        </Pressable>
+      </View>
     </ScrollView>
-    </>
   );
 }
 const styles = StyleSheet.create({
- container: {
+  container: {
     flex: 1,
     backgroundColor: '#ffffff',
     padding: 20,
   },
+
   title: {
-    color: '#000000',
     fontSize: 32,
     fontWeight: '900',
-    marginBottom: 30,
     textAlign: 'center',
-  },
-  subtitle: {
-    color: '#000000',
-    fontSize: 18,
-    fontWeight: '400',
     marginBottom: 10,
-    textAlign: 'center',
   },
-   container: {
-    gap: 5,
-  },
-  input: {
-    height: 70,
-    backgroundColor: '#fffff',
-    borderRadius: 10,
-    paddingHorizontal: 20,
-    color: 'white',
-    fontSize: 16,
-    marginLeft: 20,
-    marginRight: 20,
-    borderColor: '#000000',
-    borderWidth: 1,
-  
-  },
-  fieldtitle: {
-    color: '#000000',
-    fontSize: 18,
-    fontWeight: '600',
-    marginTop: 30,
-    textAlign: 'left',
-    marginBottom: 10,
-    marginLeft: 35,
 
+  subtitle: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 30,
   },
-    button: {
-    height: 70,
+
+  fieldtitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 8,
+    marginTop: 20,
+  },
+
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderRadius: 10,
+    height: 60,
+    paddingHorizontal: 15,
+  },
+
+  input: {
+    flex: 1,
+    marginLeft: 10,
+    fontSize: 16,
+  },
+
+  button: {
+    height: 65,
     backgroundColor: '#D61C1C',
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 40,
-    marginLeft: 20,
-    marginRight: 20,
-  },
-
-  pressed: {
-    opacity: 0.55,
-    transform: [{ scale: 0.88 }],
   },
 
   text: {
-    color: 'white',
+    color: '#fff',
     fontSize: 20,
     fontWeight: '600',
   },
 
-    orContainer: {
+  orContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 25,
-    marginLeft: 20,
-    marginRight: 20,
   },
 
   line: {
     flex: 1,
     height: 1,
-    backgroundColor: '#3a2a2a',
+    backgroundColor: '#aaa',
   },
 
   orText: {
     marginHorizontal: 10,
     color: '#aaa',
-    fontSize: 14,
   },
+
   createButton: {
-    height: 70,
-    borderRadius: 14,
+    height: 65,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: '#6b5a5a',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 20,
-    marginRight: 20,
-
   },
 
   createText: {
-    color: 'black',
     fontSize: 18,
-    fontWeight: '400',
   },
 
   pressed: {
     opacity: 0.85,
   },
-})
+});

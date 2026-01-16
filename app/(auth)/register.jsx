@@ -12,7 +12,7 @@ import {
 import { Stack } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-export default function Login({ onPress }) {
+export default function Register({ onPress }) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -85,7 +85,7 @@ export default function Login({ onPress }) {
               pressed && styles.pressed,
             ]}
           >
-            <Text style={styles.text}>Sign Up</Text>
+            <Text style={styles.text}>Continue</Text>
           </Pressable>
         </View>
       </ScrollView>

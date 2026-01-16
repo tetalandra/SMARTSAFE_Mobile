@@ -8,7 +8,7 @@ export default function Welcome(){
 
     useEffect(()=> {
         setTimeout(() => {
-            router.replace('/login');
+            router.replace('/home');
         },2000);
     }, []);
 
